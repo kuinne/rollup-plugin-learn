@@ -1,0 +1,4 @@
+- `this.resolve`: 用于解析模块的导入路径
+- `this.load`: 用于加载指定模块的内容
+- `renderChunk`: 用于在生成 bundle 文件时对每个 chunk 进行定制化的渲染处理
+- `generateBundle`: 产物生成的最后一步，用于自定义删除 chunk 或添加一些文件(要产出其他文件，请使用 this.emitFile 插件上下文函数。)

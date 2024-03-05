@@ -1,0 +1,27 @@
+{
+  "name": "rollup-plugin-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "gulp -f ./scripts/gulpfile.ts --require @esbuild-kit/cjs-loader"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.4",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/pluginutils": "^5.1.0",
+    "@types/gulp": "^4.0.17",
+    "@types/node": "^20.11.24",
+    "@types/rollup": "^0.54.0",
+    "gulp": "^4.0.2",
+    "magic-string": "^0.30.8",
+    "mini-svg-data-uri": "^1.4.4",
+    "rollup": "^4.12.0",
+    "typescript": "^5.3.3"
+  }
+}
