@@ -10,6 +10,11 @@ import alias from "../plugins/alias";
 import image from "../plugins/image";
 import replace from "../plugins/replace";
 import html from "../plugins/html";
+import virtual from "../plugins/virtual";
+import buble from "../plugins/buble";
+import addProxy from "../plugins/addProxy";
+import dynamicChunkLogs from "../plugins/dynamicChunkLogs";
+import injectPolyfillProxy from "../plugins/injectPolyfillProxy";
 import nodeResolve from "@rollup/plugin-node-resolve";
 
 const customResolver = nodeResolve({
@@ -35,12 +40,21 @@ const inputOptions: InputOptions = {
       preventAssignment: true,
     }),
     html(),
+    virtual({
+      batman: `export default 'na na na na'`,
+      "../src/robin.js": `export default 'batmannnn'`,
+    }),
+    buble(),
+    addProxy(),
+    dynamicChunkLogs(),
+    injectPolyfillProxy(),
   ],
 };
 
 const outputOptionsList: OutputOptions[] = [
   {
-    file: resolve(__dirname, "../dist/index.cjs.js"),
+    // file: resolve(__dirname, "../dist/index.cjs.js"),
+    dir: resolve(__dirname, "../dist"),
     format: "cjs",
   },
 ];
@@ -106,7 +120,7 @@ async function generateOutputs(bundle: RollupBuild) {
         //   referencedFiles: string[]      // 通过 import.meta.ROLLUP_FILE_URL_<id> 引用的文件
         //   type: 'chunk',                 // 表示这是一个 chunk
         // }
-        console.log("Chunk", chunkOrAsset.modules);
+        // console.log("Chunk", chunkOrAsset.modules);
       }
     }
     await bundle.write(outputOptions);
